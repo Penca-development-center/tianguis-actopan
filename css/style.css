@@ -60,9 +60,9 @@ body {
   justify-content: space-between;
 }
 
-.fullMenu {
+/* .fullMenu {
   display: none;
-}
+} */
 
 .headerTopMenuIconRight,
 .headerTopMenuIconLeft{
@@ -87,8 +87,10 @@ body {
 
 .headerTopIconRight--img,
 .headerTopMenuIconLeft--img{
-  width: 100%;
-  height: 100%;
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  z-index: 60;
 }
 
 .headerTopIconRight--img{

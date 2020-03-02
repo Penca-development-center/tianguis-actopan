@@ -1,5 +1,5 @@
-/*Variables*/
 
+/*Variables*/
 var menu_fix = document.getElementById('t-menu');
 var icono_aparece = document.getElementById('icono-aparece');
 var menu_disp = document.getElementById('menu-trigger');
@@ -13,13 +13,18 @@ const ANCHO_MENU = menu_fix.clientHeight;
 const ANCHO_ICONO = icono_aparece.clientHeight;
 
 // Evento scroll, que permitira la navegacion en pantalla del algunos elementos de la página
-window.addEventListener( 'scroll', ev => {
+window.addEventListener( 'scroll', ev => 
+{
 
   var scrollPosition = window.scrollY;
    
-  if(scrollPosition > ANCHO_ICONO){
-    console.log( "Aqui tiene que aparecer: " + icono_aparece.clientHeight );
-  } else {
+	if(scrollPosition > ANCHO_ICONO)
+	{
+		console.log( "Aqui tiene que aparecer: " + icono_aparece.clientHeight );
+		icono_aparece.style.animation = 'aparece .1s ease lineal';
+	} 
+	else 
+	{
     console.log( 'aqui ya no' );
 	}
 	
