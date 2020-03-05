@@ -5,6 +5,7 @@ var icono_aparece = document.getElementById('icono-aparece');
 var menu_disp = document.getElementById('menu-trigger');
 var full_menu = document.getElementById('full-menu');
 var menu_bajo = document.getElementById('icon-bottom');
+var menu_close = document.getElementById('menu-close');
 
 //Constantes
 const ANCHO_VENTANA = window.innerHeight;
@@ -32,7 +33,16 @@ window.addEventListener( 'scroll', () =>
 
 //Agregando el menu de patntalla completa
 menu_disp.addEventListener('click', ev => {
+	console.log(`abre`);
+	full_menu.style.opacity = 1;
+	full_menu.style.zIndex = 70;
+	full_menu.style.animation='aparece .5s .1s ease linear';
+});
 
+menu_close.addEventListener('click', () => {
+	console.log(`cierrra`);
+	full_menu.style.opacity = 0;
+	full_menu.style.zIndex = 50;
 });
 //Agregando la funcion de boton slider
 

@@ -116,6 +116,7 @@ body {
   justify-content: space-between;
   position: absolute;
   background:#ffda81;
+  transition: all .2s .5s ease-in-out;
 }
 
 .fullMenu_header{
