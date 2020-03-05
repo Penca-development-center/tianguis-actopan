@@ -60,7 +60,6 @@ body {
   justify-content: space-between;
 }
 
-
 .headerTopMenuIconRight,
 .headerTopMenuIconLeft{
   width: 60px;
@@ -72,6 +71,9 @@ body {
 .headerTopMenuIconLeft{
   margin-left: 150px;
   animation: desaparece 1s ease .1s forwards;
+  -moz-animation: desaparece 1s ease .1s forwards;
+  -o-animation: desaparece 1s ease .1s forwards;
+  -webkit-animation: desaparece 1s ease .1s forwards;
 }
 
 .headerTopMenuIconRight{
@@ -100,6 +102,9 @@ body {
 
 .headerTopIconRight--img:active{
   transform: scale(.9);
+  -moz-transform: scale(.9);
+  -ms-transform: scale(.9);
+  -webkit-transform: scale(.9);
 }
 
 .fullMenu {
@@ -117,7 +122,6 @@ body {
   position: absolute;
   background:#ffda81;
   transition: all .2s .5s ease-in-out;
-
 }
 
 .fullMenu_header{
@@ -214,12 +218,48 @@ body {
   align-items: center;
   justify-content: space-around;
   animation: aparece .8s ease 1s forwards;
+  -webkit-animation: aparece .8s ease 1s forwards;
+  -o-animation: aparece .8s ease 1s forwards;
 }
 
 .headerSection_text--img{
   width: 70%;
   height: 70%;
 }
+
+.fullMenu_body{
+  width: 100%;
+  height: 90vh;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.fullMenu_pab{
+  width: 100%;
+  height: 80%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.fullMenupab_b1,
+.fullMenupab_b2,
+.fullMenupab_b3{
+  border: 1px solid;
+  width: 100%;
+  height: 600px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+/* Animaciones */
 
 @keyframes aparece {
   0% {
@@ -234,6 +274,50 @@ body {
     opacity: 1;
   }
 
+}
+
+@-o-keyframes aparece {
+  0% {
+    opacity: 1;
+  }
+  
+  50%{
+    opacity: .5;
+  }
+
+  100% {
+    opacity: 0;
+  }
+
+}
+
+@-moz-keyframes aparece {
+  0% {
+    opacity: 1;
+  }
+  
+  50%{
+    opacity: .5;
+  }
+
+  100% {
+    opacity: 0;
+  }
+
+}
+
+@-webkit-keyframes aparece{
+  0% {
+    opacity: 1;
+  }
+  
+  50%{
+    opacity: .5;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
   
 @keyframes desaparece {
@@ -250,6 +334,53 @@ body {
   }
 
 }
+
+@-o-keyframes desaparece {
+  0% {
+    opacity: 1;
+  }
+  
+  50%{
+    opacity: .5;
+  }
+
+  100% {
+    opacity: 0;
+  }
+
+}
+
+@-moz-keyframes desaparece {
+  0% {
+    opacity: 1;
+  }
+  
+  50%{
+    opacity: .5;
+  }
+
+  100% {
+    opacity: 0;
+  }
+
+}
+
+@-webkit-keyframes desaparece {
+  0% {
+    opacity: 1;
+  }
+  
+  50%{
+    opacity: .5;
+  }
+
+  100% {
+    opacity: 0;
+  }
+
+}
+
+/* Adaptable a pantallas */
 
 @media screen and (max-width: 530px){
   .headerTopMenuIconRight,
@@ -315,36 +446,4 @@ body {
     align-items: center;
     justify-content: center;
   }
-}
-
-.fullMenu_body{
-  border: 1px solid;
-  width: 100%;
-  height: 85vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.fullMenu_pab{
-  width: 100%;
-  height: 80%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.fullMenupab_b1,
-.fullMenupab_b2,
-.fullMenupab_b3{
-  border: 1px solid red;
-  width: 100%;
-  height: 400px;
-  margin: 60px 0;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
 }
