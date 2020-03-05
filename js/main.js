@@ -13,15 +13,15 @@ const ANCHO_MENU = menu_fix.clientHeight;
 const ANCHO_ICONO = icono_aparece.clientHeight;
 
 // Evento scroll, que permitira la navegacion en pantalla del algunos elementos de la página
-window.addEventListener( 'scroll', ev => 
+window.addEventListener( 'scroll', () => 
 {
-
-  var scrollPosition = window.scrollY;
+	var scrollPosition = window.scrollY;
    
 	if(scrollPosition > ANCHO_ICONO)
 	{
-		console.log( "Aqui tiene que aparecer: " + icono_aparece.clientHeight );
-		icono_aparece.style.animation = 'aparece .1s ease lineal';
+		console.log( `Aqui tiene que aparecer: ${icono_aparece.clientHeight}` );
+		console.log(`Posicion: ${scrollPosition}, Ancho del elemento: ${ANCHO_ICONO}`);
+		scrollPosition === ANCHO_ICONO ? console.log("Aqui es igual") : console.log("...");
 	} 
 	else 
 	{
@@ -31,7 +31,9 @@ window.addEventListener( 'scroll', ev =>
 });
 
 //Agregando el menu de patntalla completa
+menu_disp.addEventListener('click', ev => {
 
+});
 //Agregando la funcion de boton slider
 
 // Aqui va lo de three js.

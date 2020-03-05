@@ -60,48 +60,22 @@ body {
   justify-content: space-between;
 }
 
-.fullMenu {
-  width: 100%;
-  height: 100vh;
-  position: absolute;
-  background:#ffda81;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 80;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: space-around;
-}
-
-.fullMenu_header{
-  width: 100%;
-  height: 20vh;
-  background: url("../assets/ico/actopan_frailes.png");
-  border: 1px solid white;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-}
 
 .headerTopMenuIconRight,
 .headerTopMenuIconLeft{
   width: 60px;
   height:60px;
-  margin-top: 80px;
+  margin-top: 7%;
   border: none;
 }
 
 .headerTopMenuIconLeft{
-  margin-left: 80px;
+  margin-left: 150px;
   animation: desaparece 1s ease .1s forwards;
 }
 
 .headerTopMenuIconRight{
-  margin-right: 80px;
+  margin-right: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -128,6 +102,74 @@ body {
   transform: scale(.9);
 }
 
+.fullMenu {
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 70;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  background:#ffda81;
+}
+
+.fullMenu_header{
+  width: 100%;
+  height: 150px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background: url("../assets/ico/actopan_frailes.png");
+  background-repeat:no-repeat;
+  background-size: cover;
+}
+
+.fullMenuIconRight,
+.fullMenuIconLeft{
+  width: 60px;
+  height:60px;
+  margin-top: 7%;
+  border: none;
+}
+
+.fullMenuIconLeft{
+  margin-left: 150px;
+}
+
+.fullMenuIconRight{
+  margin-right: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.fullMenuIconRight--img,
+.fullMenuIconLeft--img{
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  z-index: 60;
+}
+
+.fullMenuIconRight--img{
+  transition: all .1s  linear;
+}
+
+.fullMenuIconRight--img:hover{
+  cursor: pointer;
+}
+
+.fullMenuIconRight--img:active{
+  transform: scale(.9);
+}
+
 .headerBottom{
   width: 100%;
   height: 150px;
@@ -140,7 +182,7 @@ body {
 .headerBottomIconLeft{
 	width: 60px;
   height: 60px;
-  margin-right: 80px;
+  margin-right: 150px;
   margin-bottom: 30px;
   display: flex;
   flex-direction: column;
