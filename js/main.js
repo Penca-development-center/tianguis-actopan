@@ -19,7 +19,7 @@ const ANCHO_MENU = menu_fix.clientHeight;
 const ANCHO_ICONO = icono_aparece.clientHeight;
 
 /* Evento scroll, que permitira la navegacion en pantalla del algunos elementos de la página */
-window.addEventListener( 'scroll', () => {
+window.addEventListener( 'scroll', ev => {
 	var scrollPosition = window.scrollY;
    
 	if(scrollPosition > ANCHO_ICONO){
@@ -28,20 +28,19 @@ window.addEventListener( 'scroll', () => {
 		scrollPosition === ANCHO_ICONO ? console.log("Aqui es igual") : console.log("...");
 	} else {
   	console.log( 'aqui ya no' );
-	}
-	
+	}	
 });
 
 /* Agregando el menu de patntalla completa */
 
 /* Boton que muestra el menú */ 
-menu_disp.addEventListener('click', () => {
+menu_disp.addEventListener('click', ev => {
 	full_menu.style.opacity = 1;
 	full_menu.style.zIndex = 70;
 });
 
 /* Boton que oculta el menú */ 
-menu_close.addEventListener('click', () => {
+menu_close.addEventListener('click', ev => {
 	full_menu.style.opacity = 0;
 	full_menu.style.zIndex = 50;
 });

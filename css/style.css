@@ -94,6 +94,10 @@ body {
 
 .headerTopIconRight--img{
   transition: all .1s  linear;
+  -moz-transition: all .1s  linear;
+  -o-transition: all .1s  linear;
+  -webkit-transition: all .1s  linear;
+  -ms-transition: all .1s  linear;
 }
 
 .headerTopIconRight--img:hover{
@@ -122,6 +126,10 @@ body {
   position: absolute;
   background:#ffda81;
   transition: all .2s .5s ease-in-out;
+  -moz-transition: all .2s .5s ease-in-out;
+  -webkit-transition: all .2s .5s ease-in-out;
+  -o-transition: all .2s .5s ease-in-out;
+  -ms-transition: all .2s .5s ease-in-out;
 }
 
 .fullMenu_header{
@@ -166,6 +174,10 @@ body {
 
 .fullMenuIconRight--img{
   transition: all .1s  linear;
+  -moz-transition: all .1s  linear;
+  -webkit-transition: all .1s  linear;
+  -o-transition: all .1s  linear;
+  -ms-transition: all .1s  linear;
 }
 
 .fullMenuIconRight--img:hover{
@@ -174,7 +186,11 @@ body {
 
 .fullMenuIconRight--img:active{
   transform: scale(.9);
+  -moz-transform: scale(.9);
+  -ms-transform: scale(.9);
+  -webkit-transform: scale(.9);
 }
+
 
 .headerBottom{
   width: 100%;
@@ -194,11 +210,16 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  z-index: 60;
 }
 
 .headerBottomIconLeft--img{
   height: 100%;
   transition: all .1s linear;
+  -moz-transition: all .1s linear;
+  -o-transition: all .1s linear;
+  -webkit-transition: all .1s linear;
+  -ms-transition: all .1s linear;
 }
 
 .headerBottomIconLeft--img:hover{
@@ -207,6 +228,9 @@ body {
 
 .headerBottomIconLeft--img:active{
   transform: scale(.9);
+  -moz-transform: scale(.9);
+  -ms-transform: scale(.9);
+  -webkit-transform: scale(.9);
 }
 
 .headerSection_textContainer{
@@ -250,13 +274,35 @@ body {
 .fullMenupab_b1,
 .fullMenupab_b2,
 .fullMenupab_b3{
-  border: 1px solid;
   width: 100%;
   height: 600px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
+}
+
+.fullMenupab_b11, .fullMenupab_b12, .fullMenupab_b13,
+.fullMenupab_b21, .fullMenupab_b22, .fullMenupab_b23,
+.fullMenupab_b31, .fullMenupab_b32, .fullMenupab_b33 {
+  border: 1px solid green;
+  width: 25%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.thumb{
+  width: 80px;
+  height: 80px;
+  border: 1px solid blue;
+  border-radius: 50%;
+}
+
+.pab_body{
+  border: 1px solid red;
+  width: 70%;
 }
 
 /* Animaciones */
