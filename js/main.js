@@ -17,18 +17,35 @@ const ANCHO_VENTANA = window.innerHeight;
 const LARGO_VENTANA = window.innerWidth;
 const ANCHO_MENU = menu_fix.clientHeight;
 const ANCHO_ICONO = icono_aparece.clientHeight;
+const POSICION_ICONO = icono_aparece.clientTop; // Esto nos servira ára despues, bueno eso espero
 
 /* Evento scroll, que permitira la navegacion en pantalla del algunos elementos de la página */
 window.addEventListener( 'scroll', ev => {
+
 	var scrollPosition = window.scrollY;
-   
-	if(scrollPosition > ANCHO_ICONO){
-		console.log( `Aqui tiene que aparecer: ${icono_aparece.clientHeight}` );
-		console.log(`Posicion: ${scrollPosition}, Ancho del elemento: ${ANCHO_ICONO}`);
-		scrollPosition === ANCHO_ICONO ? console.log("Aqui es igual") : console.log("...");
-	} else {
-  	console.log( 'aqui ya no' );
-	}	
+
+	/* Haciendo estatico los iconos */ 
+	if(ANCHO_ICONO >= scrollPosition){
+		console.log(`Aqui tiene que deseaparecer.`);
+		icono_aparece.style.animation = 'desaparece .6s ease 1s forwards';
+	} else if (ANCHO_ICONO <= scrollPosition) {
+		console.log(`Aqui tiene que aparecer.`);
+		icono_aparece.style.animation = 'aparece .6s ease 1s forwards';
+	}
+
+	if(ANCHO_MENU <= scrollPosition){
+
+		menu_fix.style.position = 'fixed';
+		menu_fix.style.zIndex = 60;
+		menu_disp.addEventListener('click', ev => {
+			full_menu.style.opacity = 1;
+			full_menu.style.zIndex = 70;
+		});
+		menu_bajo.style.position = 'fixed';
+		
+	}
+	
+	
 });
 
 /* Agregando el menu de patntalla completa */
@@ -45,7 +62,9 @@ menu_close.addEventListener('click', ev => {
 	full_menu.style.zIndex = 50;
 });
 //Agregando la funcion de boton slider
-
+menu_bajo.addEventListener('click', ev => {
+	// Manera de desplazar las pagunas
+});
 // Aqui va lo de three js.
 
 // Acomodar todo con webpack
