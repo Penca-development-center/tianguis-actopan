@@ -7,6 +7,7 @@ var menu_disp = document.getElementById('menu-trigger');
 var full_menu = document.getElementById('full-menu');
 var menu_bajo = document.getElementById('icon-bottom');
 var menu_close = document.getElementById('menu-close');
+var menu_bottom = document.getElementById('menu-bottom');
 
 /* Iniicialización de las variables */
 var camera, scene; // Esto es para la libreria three.ja
@@ -24,13 +25,13 @@ window.addEventListener( 'scroll', ev => {
 
 	var scrollPosition = window.scrollY;
 
-	/* Haciendo estatico los iconos */ 
+  /* Haciendo estatico los iconos */
+  
+  /* Mostrando el icono*/ 
 	if(ANCHO_ICONO >= scrollPosition){
-		console.log(`Aqui tiene que deseaparecer.`);
-		icono_aparece.style.animation = 'desaparece .6s ease 1s forwards';
+		icono_aparece.style.opacity= 0;
 	} else if (ANCHO_ICONO <= scrollPosition) {
-		console.log(`Aqui tiene que aparecer.`);
-		icono_aparece.style.animation = 'aparece .6s ease 1s forwards';
+		icono_aparece.style.opacity = 1;
 	}
 
 	if(ANCHO_MENU <= scrollPosition){
@@ -41,10 +42,10 @@ window.addEventListener( 'scroll', ev => {
 			full_menu.style.opacity = 1;
 			full_menu.style.zIndex = 70;
 		});
-		menu_bajo.style.position = 'fixed';
-		
+
+    menu_bottom.style.position = 'fixed';
+    menu_bottom.style.bottom = 0;
 	}
-	
 	
 });
 
