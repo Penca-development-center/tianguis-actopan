@@ -261,6 +261,19 @@ body {
   justify-content: center;
 }
 
+.fullMenu_body h3{
+  width: 90%;
+  height: 100px;
+  /* border: 1px solid; */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 35px;
+  letter-spacing: 2px;
+}
+
 .fullMenu_pab{
   width: 100%;
   height: 80%;
@@ -285,7 +298,7 @@ body {
 .fullMenupab_b11, .fullMenupab_b12, .fullMenupab_b13,
 .fullMenupab_b21, .fullMenupab_b22, .fullMenupab_b23,
 .fullMenupab_b31, .fullMenupab_b32, .fullMenupab_b33 {
-  border: 1px solid green;
+  /* border: 1px solid green; */
   width: 25%;
   display: flex;
   flex-direction: row;
@@ -301,8 +314,42 @@ body {
 }
 
 .pab_body{
-  border: 1px solid red;
+  /* border: 1px solid red; */
   width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.pab_link{
+  text-decoration: none;
+  width: 80%;
+  height: 35px;
+  color: red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid;
+  text-align: center;
+  border-radius: 50px;
+  transition: transform .1s linear;
+  -moz-transition: transform .1s linear;
+  -o-transition: transform .1s linear;
+  -webkit-transition: transform .1s linear;
+  -ms-transition: transform .1s linear;
+}
+
+.pab_link:hover {
+  cursor: pointer;
+}
+
+.pab_link:active{
+  transform: scale(.9);
+  -o-transform: scale(.9);
+  -ms-transform: scale(.9);
+  -webkit-transform: scale(.9);
+  -moz-transform: scale(.9);
 }
 
 /* Animaciones */
