@@ -60,7 +60,7 @@ menu_disp.addEventListener('click', ev => {
 /* Boton que oculta el menú */ 
 menu_close.addEventListener('click', ev => {
 	full_menu.style.opacity = 0;
-	full_menu.style.zIndex = 50;
+	full_menu.style.zIndex = -1000;
 });
 //Agregando la funcion de boton slider
 menu_bajo.addEventListener('click', ev => {
