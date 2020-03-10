@@ -9,6 +9,19 @@ var menu_bajo = document.getElementById('icon-bottom');
 var menu_close = document.getElementById('menu-close');
 var menu_bottom = document.getElementById('menu-bottom');
 
+// Nubes
+let c_1 = document.getElementById('c1');
+let c_2 = document.getElementById('c2');
+let c_3 = document.getElementById('c3');
+let c_4 = document.getElementById('c4');
+let c_5 = document.getElementById('c5');
+let c_6 = document.getElementById('c6');
+let c_7 = document.getElementById('c7');
+let c_8 = document.getElementById('c8');
+let c_9 = document.getElementById('c9');
+let c_10 = document.getElementById('c10');
+
+
 /* Iniicialización de las variables */
 var camera, scene; // Esto es para la libreria three.ja
 var scrollPosition; // Para obtener la posicion del scroll en el eje y.
@@ -55,12 +68,14 @@ window.addEventListener( 'scroll', ev => {
 menu_disp.addEventListener('click', ev => {
 	full_menu.style.opacity = 1;
 	full_menu.style.zIndex = 70;
+	document.body.style.overflow = 'hidden';
 });
 
 /* Boton que oculta el menú */ 
 menu_close.addEventListener('click', ev => {
 	full_menu.style.opacity = 0;
 	full_menu.style.zIndex = -1000;
+	document.body.style.overflow = 'visible';
 });
 //Agregando la funcion de boton slider
 menu_bajo.addEventListener('click', ev => {
