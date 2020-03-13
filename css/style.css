@@ -37,6 +37,7 @@ body {
   width: 100px;
   height: 50px;
   position: fixed;
+  transition: all .1s ease-in-out;
   z-index: 50;
   top: 0;
   left: 0;
@@ -44,8 +45,8 @@ body {
 
 
 .c1{
-  margin-top: calc(20vh - 100px);
-  margin-left: calc(22% - 100px);
+  margin-top: calc(18vh - 100px);
+  margin-left: calc(23% - 100px);
   transform: scale(2);
   -ms-transform: scale(2);
   -webkit-transform: scale(2);
@@ -55,7 +56,7 @@ body {
 
 .c2{
   margin-top: calc(20vh - 100px);
-  margin-left: calc(80% - 100px);
+  margin-left: calc(95% - 100px);
   transform: scale(2);
   -ms-transform: scale(2);
   -webkit-transform: scale(2);
@@ -65,7 +66,7 @@ body {
 
 .c3{
   margin-top: calc(25vh - 100px);
-  margin-left: calc(10% - 100px);
+  margin-left: calc(15% - 100px);
   transform: scale(5);
   -ms-transform: scale(5);
   -webkit-transform: scale(5);
@@ -74,8 +75,9 @@ body {
 }
 
 .c4 {
-  margin-top: calc(20vh - 100px);
+  margin-top: calc(23vh - 100px);
   margin-left: calc(100% - 100px);
+  z-index: 40;
   transform: scale(2);
   -ms-transform: scale(2);
   -webkit-transform: scale(2);
@@ -84,28 +86,28 @@ body {
 }
 
 .c5 {
-  margin-top: calc(22vh - 100px);
-  margin-left: calc(50% - 100px);
-  transform: scale(5);
-  -ms-transform: scale(5);
-  -webkit-transform: scale(5);
-  -o-transform: scale(5);
-  -moz-transform: scale(5);
+  margin-top: calc(32vh - 100px);
+  margin-left: calc(16% - 100px);
+  transform: scale(2);
+  -ms-transform: scale(2);
+  -webkit-transform: scale(2);
+  -o-transform: scale(2);
+  -moz-transform: scale(2);
 }
 
 .c6{
-  margin-top: calc(20vh - 100px);
-  margin-left: calc(55% - 100px);
-  transform: scale(5);
-  -ms-transform: scale(5);
-  -webkit-transform: scale(5);
-  -o-transform: scale(5);
-  -moz-transform: scale(5);
+  margin-top: calc(37vh - 100px);
+  margin-left: calc(6% - 100px);
+  transform: scale(3);
+  -ms-transform: scale(3);
+  -webkit-transform: scale(3);
+  -o-transform: scale(3);
+  -moz-transform: scale(3);
 }
 
 .c7{
-  margin-top: calc(70vh - 100px);
-  margin-left: calc(60% - 100px);
+  margin-top: calc(40vh - 100px);
+  margin-left: calc(98% - 100px);
   transform: scale(5);
   -ms-transform: scale(5);
   -webkit-transform: scale(5);
@@ -114,8 +116,8 @@ body {
 }
 
 .c8{
-  margin-top: calc(0vh - 100px);
-  margin-left: calc(10% - 100px);
+  margin-top: calc(84vh - 100px);
+  margin-left: calc(28% - 100px);
   transform: scale(3);
   -ms-transform: scale(3);
   -webkit-transform: scale(3);
@@ -124,34 +126,54 @@ body {
 }
 
 .c9{
-  margin-top: calc(50vh - 100px);
-  margin-left: calc(10% - 100px);
-  transform: scale(3);
-  -ms-transform: scale(3);
-  -webkit-transform: scale(3);
-  -o-transform: scale(3);
-  -moz-transform: scale(3);
+  margin-top: calc(96vh - 100px);
+  margin-left: calc(21% - 100px);
+  transform: scale(6);
+  -ms-transform: scale(6);
+  -webkit-transform: scale(6);
+  -o-transform: scale(6);
+  -moz-transform: scale(6);
 }
 
 .c10{
-  margin-top: calc(100vh - 100px);
-  margin-left: calc(10% - 100px);
-  transform: scale(3);
-  -ms-transform: scale(3);
-  -webkit-transform: scale(3);
-  -o-transform: scale(3);
-  -moz-transform: scale(3);
+  margin-top: calc(90vh - 100px);
+  margin-left: calc(68% - 100px);
+  transform: scale(4);
+  -ms-transform: scale(4);
+  -webkit-transform: scale(4);
+  -o-transform: scale(4);
+  -moz-transform: scale(4);
 }
 
 .c11{
-
+  margin-top: calc(48vh - 100px);
+  margin-left: calc(98% - 100px);
+  z-index: 40;
+  transform: scale(1.8);
+  -ms-transform: scale(1.8);
+  -webkit-transform: scale(1.8);
+  -o-transform: scale(1.8);
+  -moz-transform: scale(1.8);
 }
 
-.c12{
-
+.c12 {
+    margin-top: calc(100vh - 100px);
+    margin-left: calc(103% - 100px);
+    transform: scale(4);
+    -ms-transform: scale(1.8);
+    -webkit-transform: scale(1.8);
+    -o-transform: scale(1.8);
+    -moz-transform: scale(1.8);
 }
 
-
+.intro{
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
 
 .headerTopMenu{
   width: 100vw;
