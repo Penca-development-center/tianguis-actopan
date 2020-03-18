@@ -1,0 +1,68 @@
+//   console.log(`${scrollPosition}`);
+	/* Mostrando el icono*/ 
+	  if(ANCHO_ICONO >= scrollPosition){
+		  icono_aparece.style.opacity= 0;
+		  for(let j = 0; j < nubes.length; j++){
+				let cloud = nubes[j];
+				cloud.classList.remove(`c${j+1}`);
+				cloud.classList.remove(`c${j+1}h`);
+				cloud.classList.add('cloud_center');
+		  }
+	  } else if (ANCHO_ICONO <= scrollPosition) {
+		  icono_aparece.style.opacity = 1;
+	  }
+	  
+
+	  if(ANCHO_MENU <= scrollPosition){
+  
+		  menu_fix.style.position = 'fixed';
+		  menu_fix.style.zIndex = 60;
+		  menu_disp.addEventListener('click', ev => {
+		  full_menu.style.opacity = 1;
+		  full_menu.style.zIndex = 70;
+		  });
+  
+	  menu_bottom.style.position = 'fixed';
+	  menu_bottom.style.bottom = 0;
+	  }
+
+
+	  if(ANCHO_VENTANA / 2 > scrollPosition){
+		for(let j = 0; j < nubes.length; j++){
+			let cloud = nubes[j];
+			cloud.classList.remove('cloud_center')
+			cloud.classList.remove(`c${j+1}`);
+			cloud.classList.add(`c${j+1}h`);
+	  }
+	  } else if(ANCHO_VENTANA / 2 <= scrollPosition){
+		for(let j = 0; j < nubes.length; j++){
+			let cloud = nubes[j];
+			cloud.classList.remove('cloud_center');
+			cloud.classList.remove(`c${j+1}h`);
+			cloud.classList.add(`c${j+1}`);
+		}
+	  } else {
+		cloud.classList.remove(`c${j+1}`);
+		cloud.classList.remove(`c${j+1}h`);
+		cloud.classList.add('cloud_center');
+	  }
+	  
+
+	  /* Moviedno las nubes las nubes */
+	if(SCROLLED > 0){
+		for(let i = 0; i < nubes.length; i+=1){
+			let nube = nubes[i];
+			nube.style.marginLeft = `${i*10}%`;
+			nube.style.marginTop =  `${i*3}vh`;
+			nube.style.transform = 'scale(5)';
+			nube.style.opacity = 0;
+		}
+	} else {
+		for(let i = 0; i < nubes.length; i+=1){
+			let nube = nubes[i];
+			nube.style.marginLeft = `706px`;
+			nube.style.marginTop =  `360px`;
+			nube.style.transform = 'scale(1)';
+			nube.style.opacity = 1;
+		}
+	}

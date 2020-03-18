@@ -37,12 +37,34 @@ body {
   width: 100px;
   height: 50px;
   position: fixed;
-  transition: all .1s ease-in-out;
+  transition: all .8s linear;
+  -o-transition: all .8s linear;
+  -moz-transition: all .8s linear;
+  -webkit-transition: all .8s linear;
   z-index: 50;
   top: 0;
   left: 0;
 } 
 
+.cloud_center{
+  margin-top: calc(50vh);
+  margin-left: calc(50%);
+  transform: scale(3);
+  -ms-transform: scale(3);
+  -webkit-transform: scale(3);
+  -o-transform: scale(3);
+  -moz-transform: scale(3);
+}
+
+.cloud_half{
+  margin-top: calc(25vh);
+  margin-left: calc(24%);
+  transform: scale(3);
+  -ms-transform: scale(3);
+  -webkit-transform: scale(3);
+  -o-transform: scale(3);
+  -moz-transform: scale(3);
+}
 
 .c1{
   margin-top: calc(18vh - 100px);
@@ -159,12 +181,79 @@ body {
 .c12 {
     margin-top: calc(100vh - 100px);
     margin-left: calc(103% - 100px);
-    transform: scale(4);
+    transform: scale(1.8);
     -ms-transform: scale(1.8);
     -webkit-transform: scale(1.8);
     -o-transform: scale(1.8);
     -moz-transform: scale(1.8);
 }
+
+
+.c1h{
+  margin-top: calc(27vh - 100px);
+  margin-left: calc(34.5% - 100px);
+}
+
+.c2h{
+   margin-top: calc(40vh - 100px);
+  margin-left: calc(143% - 100px);
+
+}
+
+.c3h{
+  margin-top: calc(25vh - 100px);
+  margin-left: calc(15% - 100px);
+}
+
+.c4h{
+  margin-top: calc(23vh - 100px);
+  margin-left: calc(100% - 100px);
+  z-index: 40;
+}
+
+.c5h{
+  margin-top: calc(32vh - 100px);
+  margin-left: calc(16% - 100px);
+}
+
+.c6h{
+  margin-top: calc(37vh - 100px);
+  margin-left: calc(6% - 100px);
+}
+
+
+.c7h{
+  margin-top: calc(84vh - 100px);
+  margin-left: calc(28% - 100px);
+}
+
+.c8h{
+  margin-top: calc(96vh - 100px);
+  margin-left: calc(21% - 100px);
+}
+
+.c9h{
+  margin-top: calc(90vh - 100px);
+  margin-left: calc(68% - 100px);
+}
+
+.c10h{
+  margin-top: calc(48vh - 100px);
+  margin-left: calc(98% - 100px);
+}
+
+.c11h{
+    margin-top: calc(100vh - 100px);
+    margin-left: calc(103% - 100px);
+  z-index: 40;
+}
+
+.c12h{
+    margin-left: calc(52% - 100px);
+}
+
+
+
 
 .intro{
   width: 100%;

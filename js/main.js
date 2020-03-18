@@ -10,8 +10,7 @@ var menu_close = document.getElementById('menu-close');
 var menu_bottom = document.getElementById('menu-bottom');
 
 /* Iniicialización de las variables */
-var camera, scene; // Esto es para la libreria three.ja
-var scrollPosition; // Para obtener la posicion del scroll en el eje y.
+var camera, scene; // Esto es para la libreria three.jacroll en el eje y.
 
 /* Constantes */
 const ANCHO_VENTANA = window.innerHeight;
@@ -49,53 +48,102 @@ let slide10 = document.querySelector('#slide10');
 let slide11 = document.querySelector('#slide11');
 let slide12 = document.querySelector('#slide12');
 
+var icono_actopan = document.getElementById('icono-actopan');
 /* Obteneindo posciones de las nubes */
 var nubes = [c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12];
-var nubesPoscionActualX = [ ];
-var nubesPoscionActualY = [ ];
+var nubesPoscionActualX = [231,1268,116,1340,139,-14,1311,303,202,879,1311,1383];
+var nubesPoscionActualY = [69,80,125,107,188,133,260,656,764,710,332,800];
+var puntomedioX = 706;
+var puntomedioY = 360;
 
-for(let i = 0; i < nubes.length; i++){
-	var nube = nubes[i];
-	var nubeX = nubes[i].offsetLeft;
-	var nubeY = nubes[i].offsetTop;
-	var topeNubeP = ANCHO_VENTANA - nubeX;
-	var topeNubeN = 0 - nubeX;
-	nubesPoscionActualX.push(nubeX);
-	nubesPoscionActualY.push(nubeY);
-	// console.log(`nube: ${i+1}. 
-	// posicion en X: ${nubeX}, poscicion en Y: ${nubeY}.
-	// tope: ${topeNubeP}, tope 2: ${topeNubeN}.`);
-}
+window.addEventListener('load', e => {
+	for(let i = 0; i < nubes.length; i++){
+		let nube = nubes[i];
+		nube.style.transform = 'scale(3)';
+		var nubeX = nubes[i].offsetLeft;
+		var nubeY = nubes[i].offsetTop;
+		var topeNubeP = ANCHO_VENTANA - nubeX;
+		var topeNubeN = 0 - nubeX;
+		// nube.style.marginLeft = `${puntomedioX}px`;
+		// nube.style.marginTop = `${puntomedioY}px`;
+		// nube.style.transform = 'scale(1.1)';
+		nube.classList.remove(`c${i+1}`);
+		nube.classList.remove(`c${i+1}h`);
+		nube.classList.add('cloud_center');
+		// nubeTamano.push(nube.offsetWidth);
+	
+		// console.log(`nube: ${i+1}. 
+		// posicion en X: ${nubeX}, poscicion en Y: ${nubeY}.
+		// tope: ${topeNubeP}, tope 2: ${topeNubeN}.`);
+	}
+});
+
+
 
 // console.log(`Posiciones en X: ${nubesPoscionActualX}.
-// Posiciones en Y: ${nubesPoscionActualY}`);
+// Posiciones en Y: ${nubesPoscionActualY}
+// Tamaño: ${nubeTamano}`);
 
 /* Evento scroll, que permitira la navegacion en pantalla del algunos elementos de la página */
-window.addEventListener( 'scroll', ev => {
-
-	var scrollPosition = window.scrollY;
-	  console.log(`${scrollPosition}`);
+window.addEventListener( 'scroll', () => {
+	const SCROLLED = window.scrollY;
+	const SCROLLEABLE = document.documentElement.scrollHeight - window.innerHeight;
 	/* Mostrando el icono*/ 
-	  if(ANCHO_ICONO >= scrollPosition){
-		  icono_aparece.style.opacity= 0;
-	  } else if (ANCHO_ICONO <= scrollPosition) {
-		  icono_aparece.style.opacity = 1;
-	  }
-  
-	  if(ANCHO_MENU <= scrollPosition){
-  
-		  menu_fix.style.position = 'fixed';
-		  menu_fix.style.zIndex = 60;
-		  menu_disp.addEventListener('click', ev => {
-			  full_menu.style.opacity = 1;
-			  full_menu.style.zIndex = 70;
-		  });
-  
-	  menu_bottom.style.position = 'fixed';
-	  menu_bottom.style.bottom = 0;
-	  }
-	  
-  });
+	if(ANCHO_ICONO >= SCROLLED){
+		icono_aparece.style.opacity= 0;
+	} else if (ANCHO_ICONO <= SCROLLED) {
+		icono_aparece.style.opacity = 1;
+	}
+	
+
+	if(ANCHO_MENU >= SCROLLED){
+
+		menu_fix.style.position = 'fixed';
+		menu_fix.style.zIndex = 60;
+		menu_disp.addEventListener('click', ev => {
+		full_menu.style.opacity = 1;
+		full_menu.style.zIndex = 70;
+		});
+
+	menu_bottom.style.position = 'fixed';
+	menu_bottom.style.bottom = 0;
+	}
+
+	// Moviendo las nubes
+
+	if (SCROLLED <= slide0.scrollHeight && SCROLLED > 150) {
+		// Escalamiento individual de cada una de las nubes
+		nubes[0].style.transform='scale(' + (SCROLLED/(1350 - slide0.scrollHeight)) + ')'; // 2
+		nubes[0].style.marginTop = `calc(${SCROLLED / (950 - slide0.scrollHeight)}vh`; // 18vh - 100px
+		nubes[0].style.marginLeft = `calc(${SCROLLED / (939.0713 - slide0.scrollHeight)}%)`; // 23% - 100px
+		nubes[1].style.transform='scale(' + (SCROLLED/(1350 - slide0.scrollHeight)) + ')'; // 2
+		nubes[2].style.transform='scale(' + (SCROLLED/(1080 - slide0.scrollHeight)) + ')'; // 5
+		nubes[3].style.transform='scale(' + (SCROLLED/(1350 - slide0.scrollHeight)) + ')'; // 2
+		nubes[4].style.transform='scale(' + (SCROLLED/(1350 - slide0.scrollHeight)) + ')'; // 2 
+		nubes[5].style.transform='scale(' + (SCROLLED/(1200 - slide0.scrollHeight)) + ')'; // 3
+		nubes[6].style.transform='scale(' + (SCROLLED/(1080 - slide0.scrollHeight)) + ')'; // 5
+		nubes[7].style.transform='scale(' + (SCROLLED/(1200 - slide0.scrollHeight)) + ')'; // 3
+		nubes[8].style.transform='scale(' + (SCROLLED/(1050 - slide0.scrollHeight)) + ')'; // 6
+		nubes[9].style.transform='scale(' + (SCROLLED/(1125 - slide0.scrollHeight)) + ')'; // 4
+		nubes[10].style.transform='scale(' + (SCROLLED/(1400 - slide0.scrollHeight)) + ')'; // 1.8
+		nubes[11].style.transform='scale(' + (SCROLLED/(1400 - slide0.scrollHeight)) + ')'; // 1.8
+
+		// Compatibilidad con otros navegadores
+		nubes[0].style.webkitTransform='scale(' + (SCROLLED/(1350 - slide0.scrollHeight)) + ')'; // 2
+		nubes[1].style.webkitTransform='scale(' + (SCROLLED/(1350 - slide0.scrollHeight)) + ')'; // 2
+		nubes[2].style.webkitTransform='scale(' + (SCROLLED/(1080 - slide0.scrollHeight)) + ')'; // 5
+		nubes[3].style.webkitTransform='scale(' + (SCROLLED/(1350 - slide0.scrollHeight)) + ')'; // 2
+		nubes[4].style.webkitTransform='scale(' + (SCROLLED/(1350 - slide0.scrollHeight)) + ')'; // 2 
+		nubes[5].style.webkitTransform='scale(' + (SCROLLED/(1200 - slide0.scrollHeight)) + ')'; // 3
+		nubes[6].style.webkitTransform='scale(' + (SCROLLED/(1080 - slide0.scrollHeight)) + ')'; // 5
+		nubes[7].style.webkitTransform='scale(' + (SCROLLED/(1200 - slide0.scrollHeight)) + ')'; // 3
+		nubes[8].style.webkitTransform='scale(' + (SCROLLED/(1050 - slide0.scrollHeight)) + ')'; // 6
+		nubes[9].style.webkitTransform='scale(' + (SCROLLED/(1125 - slide0.scrollHeight)) + ')'; // 4
+		nubes[10].style.webkitTransform='scale(' + (SCROLLED/(1400 - slide0.scrollHeight)) + ')'; // 1.8
+		nubes[11].style.webkitTransform='scale(' + (SCROLLED/(1400 - slide0.scrollHeight)) + ')'; // 1.8
+	}
+	console.log(`${SCROLLED} : ${slide0.scrollHeight}`);
+});
 
 /* Agregando el menu de patntalla completa */
 
