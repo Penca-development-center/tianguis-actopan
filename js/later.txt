@@ -66,3 +66,80 @@
 			nube.style.opacity = 1;
 		}
 	}
+
+
+		// Moviendo las nubes
+
+	if(SCROLLED >= 0 && SCROLLED < 150){
+		for (let i = 0; i < nubes.length; i++) {
+			let nube = nubes[i];
+			nube.style.marginTop = `50vh`;
+			nube.style.marginLeft = `50%`;
+			nube.style.transform = 'scale(5)';
+		}
+	}
+
+	if (SCROLLED <= slide0.scrollHeight && SCROLLED >= 150) {
+		// Escalamiento individual de cada una de las nubes
+		nubes[0].style.transform='scale(' + (SCROLLED/(1350 - slide0.scrollHeight)) + ')'; // 2
+		nubes[0].style.marginTop = `calc(${SCROLLED / (950 - slide0.scrollHeight)}vh`; // 18vh 
+		nubes[0].style.marginLeft = `calc(${SCROLLED / (939.0713 - slide0.scrollHeight)}%`; // 23%
+
+		nubes[1].style.transform='scale(' + (SCROLLED/(1350 - slide0.scrollHeight)) + ')'; // 2
+		nubes[1].style.marginTop = `calc(${SCROLLED / (945 - slide0.scrollHeight)}vh`; // 18vh 
+		nubes[1].style.marginLeft = `calc(${SCROLLED / (909.4 - slide0.scrollHeight)}%`; // 23%
+
+		nubes[2].style.transform='scale(' + (SCROLLED/(1080 - slide0.scrollHeight)) + ')'; // 5
+		nubes[2].style.marginTop = `calc(${SCROLLED / (936 - slide0.scrollHeight)}vh`; // 18vh 
+		nubes[2].style.marginLeft = `calc(${SCROLLED / (960 - slide0.scrollHeight)}%`; // 23%
+
+		nubes[3].style.transform='scale(' + (SCROLLED/(1350 - slide0.scrollHeight)) + ')'; // 2
+		nubes[3].style.marginTop = `calc(${SCROLLED / (939 - slide0.scrollHeight)}vh`; // 18vh 
+		nubes[3].style.marginLeft = `calc(${SCROLLED / (909 - slide0.scrollHeight)}%`; // 23%
+		
+		nubes[4].style.transform='scale(' + (SCROLLED/(1350 - slide0.scrollHeight)) + ')'; // 2
+		nubes[4].style.marginTop = `calc(${SCROLLED / (927.9 - slide0.scrollHeight)}vh`; // 18vh 
+		nubes[4].style.marginLeft = `calc(${SCROLLED / (953 - slide0.scrollHeight)}%`; // 23%
+		 
+		nubes[5].style.transform='scale(' + (SCROLLED/(1200 - slide0.scrollHeight)) + ')'; // 3
+		nubes[5].style.marginTop = `calc(${SCROLLED / (924.099 - slide0.scrollHeight)}vh`; // 18vh 
+		nubes[5].style.marginLeft = `calc(${SCROLLED / (1050 - slide0.scrollHeight)}%`; // 23%
+		
+		nubes[6].style.transform='scale(' + (SCROLLED/(1080 - slide0.scrollHeight)) + ')'; // 5
+		nubes[6].style.marginTop = `calc(${SCROLLED / (922 - slide0.scrollHeight)}vh`; // 18vh 
+		nubes[6].style.marginLeft = `calc(${SCROLLED / (909.1 - slide0.scrollHeight)}%`; // 23%
+		
+		nubes[7].style.transform='scale(' + (SCROLLED/(1200 - slide0.scrollHeight)) + ')'; // 3
+		nubes[7].style.marginTop = `calc(${SCROLLED / (910.6 - slide0.scrollHeight)}vh`; // 18vh 
+		nubes[7].style.marginLeft = `calc(${SCROLLED / (931.7 - slide0.scrollHeight)}%`; // 23%
+		
+		nubes[8].style.transform='scale(' + (SCROLLED/(1050 - slide0.scrollHeight)) + ')'; // 6
+		nubes[8].style.marginTop = `calc(${SCROLLED / (909.3 - slide0.scrollHeight)}vh`; // 18vh 
+		nubes[8].style.marginLeft = `calc(${SCROLLED / (942 - slide0.scrollHeight)}%`; // 23%
+		
+		nubes[9].style.transform='scale(' + (SCROLLED/(1125 - slide0.scrollHeight)) + ')'; // 4
+		nubes[9].style.marginTop = `calc(${SCROLLED / (910 - slide0.scrollHeight)}vh`; // 18vh 
+		nubes[9].style.marginLeft = `calc(${SCROLLED / (913.2 - slide0.scrollHeight)}%`; // 23%
+		
+		nubes[10].style.transform='scale(' + (SCROLLED/(1400 - slide0.scrollHeight)) + ')'; // 1.8
+		nubes[10].style.marginTop = `calc(${SCROLLED / (918.5 - slide0.scrollHeight)}vh`; // 18vh 
+		nubes[10].style.marginLeft = `calc(${SCROLLED / (909.1 - slide0.scrollHeight)}%`; // 23%
+		
+		nubes[11].style.transform='scale(' + (SCROLLED/(1400 - slide0.scrollHeight)) + ')'; // 1.8
+		nubes[11].style.marginTop = `calc(${SCROLLED / (909 - slide0.scrollHeight)}vh`; // 18vh 
+		nubes[11].style.marginLeft = `calc(${SCROLLED / (908.3 - slide0.scrollHeight)}%`; // 23%
+		
+
+		// Compatibilidad con otros navegadores
+		nubes[0].style.webkitTransform='scale(' + (SCROLLED/(1350 - slide0.scrollHeight)) + ')'; // 2
+		nubes[1].style.webkitTransform='scale(' + (SCROLLED/(1350 - slide0.scrollHeight)) + ')'; // 2
+		nubes[2].style.webkitTransform='scale(' + (SCROLLED/(1080 - slide0.scrollHeight)) + ')'; // 5
+		nubes[3].style.webkitTransform='scale(' + (SCROLLED/(1350 - slide0.scrollHeight)) + ')'; // 2
+		nubes[4].style.webkitTransform='scale(' + (SCROLLED/(1350 - slide0.scrollHeight)) + ')'; // 2 
+		nubes[5].style.webkitTransform='scale(' + (SCROLLED/(1200 - slide0.scrollHeight)) + ')'; // 3
+		nubes[6].style.webkitTransform='scale(' + (SCROLLED/(1080 - slide0.scrollHeight)) + ')'; // 5
+		nubes[7].style.webkitTransform='scale(' + (SCROLLED/(1200 - slide0.scrollHeight)) + ')'; // 3
+		nubes[8].style.webkitTransform='scale(' + (SCROLLED/(1050 - slide0.scrollHeight)) + ')'; // 6
+		nubes[9].style.webkitTransform='scale(' + (SCROLLED/(1125 - slide0.scrollHeight)) + ')'; // 4
+		nubes[10].style.webkitTransform='scale(' + (SCROLLED/(1400 - slide0.scrollHeight)) + ')'; // 1.8
+		nubes[11].style.webkitTransform='scale(' + (SCROLLED/(1400 - slide0.scrollHeight)) + ')'; // 1.8
