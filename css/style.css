@@ -38,10 +38,10 @@ body {
   width: 100px;
   height: 50px;
   position: fixed;
-  transition: all .2s linear;
-  -o-transition: all .2s linear;
-  -moz-transition: all .2s linear;
-  -webkit-transition: all .2s linear;
+  transition: all .2s ease;
+  -o-transition: all .2s ease;
+  -moz-transition: all .2s ease;
+  -webkit-transition: all .2s ease;
 
   transform-style: preserve-3d;
   perspective-origin: center center;
@@ -298,15 +298,9 @@ body {
   width: 450px;
   height: 450px;
   display: flex;
-  opacity: 0;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  animation: aparece .8s ease 1s forwards;
-  -webkit-animation: aparece .8s ease 1s forwards;
-  -o-animation: aparece .8s ease 1s forwards;
-  -moz-animation: aparece .8s ease 1s forwards;
-  -ms-animaton: aparece .8s ease 1s forwards;
 }
 
 .headerSection_text--img{
@@ -570,6 +564,13 @@ section{
   width: 100vw;
   height: 330px;
 }
+
+#slide3{
+  width: 100vw;
+  height: 100vh;
+  background: rgb(242,132,110);
+}
+
 /* Animaciones */
 
 @keyframes aparece {

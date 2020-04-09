@@ -1,6 +1,6 @@
 /*Variables*/
 
-/* Elementnos de la página */ 
+/* Elementnos de la página */
 var menu_fix = document.getElementById('t-menu');
 var icono_aparece = document.getElementById('icono-aparece');
 var menu_disp = document.getElementById('menu-trigger');
@@ -8,7 +8,6 @@ var full_menu = document.getElementById('full-menu');
 var menu_bajo = document.getElementById('icon-bottom');
 var menu_close = document.getElementById('menu-close');
 var menu_bottom = document.getElementById('menu-bottom');
-let lastScroll = 0;
 
 /* Iniicialización de las variables */
 var camera, scene; // Esto es para la libreria three.jacroll en el eje y.
@@ -18,6 +17,7 @@ const ANCHO_VENTANA = window.innerHeight;
 const LARGO_VENTANA = window.innerWidth;
 const ANCHO_MENU = menu_fix.clientHeight;
 const ANCHO_ICONO = icono_aparece.clientHeight;
+
 
 // Nubes
 let c1 = document.getElementById('c1');
@@ -32,19 +32,11 @@ let c9 = document.getElementById('c9');
 let c10 = document.getElementById('c10');
 let c11 = document.getElementById('c11');
 let c12 = document.getElementById('c12');
-let slide2 = document.getElementById('slide2');
 
 /* Obteneindo posciones de las nubes */
 var nubes = [c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12];
+var orientaciones = ["si","sd","si","sd","si","si","sd","ii","ii","id","sd","id"];
 
-/* Evento scroll, que permitira la navegacion en pantalla del algunos elementos de la página */
-window.addEventListener( 'scroll', () => 
-{
-
-  const SCROLLED = window.scrollY;
-  let opacityActual = 1;
-  let efecto = document.getElementById('slide0');
-  // Scales de las nubes
   var scaleNormal = 1;
   var nube1ScaleActual = 2;
   var nube2ScaleActual = 2;
@@ -59,87 +51,156 @@ window.addEventListener( 'scroll', () =>
   var nube11ScaleActual = 2;
   var nube12ScaleActual = 2;
 
+function descomponerMatrizTransform(matriz){
+	//funciona en matrices sin espacios tras la coma
+	let paso1=matriz.split("(");
+	let paso2=paso1[1].split(")");
+	let paso3=paso2[0].split(",");
+	return paso3;
+}
+function definirKeyframes(esquina, nube){
+	const estilos=getComputedStyle(nube);
+	const matrizNube=estilos.transform;
+	let scaleX=descomponerMatrizTransform(matrizNube)[0];
+	let keyframes;
+	let translateX;
+	let translateY;
+	switch(esquina){
+		case "sd":
+			translateX=300;
+			translateY=100;
+			break;
+		case "si":
+			translateX=-300;
+			translateY=100;
+			break;
+		case "ii":
+			translateX=-300;
+			translateY=100;
+			break;
+		case "id":
+			translateX=300;
+			translateY=100;
+			break;
+	}
+	keyframes=[
+		{
+			transform: `matrix(${scaleX},0.00,0.00,${scaleX},0,0)`,
+			opacity: '1'
+		},
+		{
+			transform: `matrix(${(parseFloat(scaleX)+5)},0.00,0.00,${(parseFloat(scaleX)+5)},${translateX},${translateY})`,
+			opacity: '0'
+		}
+	];
+	return keyframes;
+}
+var arrayFrames = [];
+for (let i = 0; i < nubes.length; i++) {
+	const frames = definirKeyframes(orientaciones[i],nubes[i]);
+	arrayFrames.push(frames);
+}
+function redondear(num, decimales = 2) {
+    var signo = (num >= 0 ? 1 : -1);
+    num = num * signo;
+    if (decimales === 0) //con 0 decimales
+        return signo * Math.round(num);
+    // round(x * 10 ^ decimales)
+	num = num.toString().split('e');
+    num = Math.round(+(num[0] + 'e' + (num[1] ? (+num[1] + decimales) : decimales)));
+	// x * 10 ^ (-decimales)
+	num = num.toString().split('e');
+    return signo * (num[0] + 'e' + (num[1] ? (+num[1] - decimales) : -decimales));
+}
+function ajustarValores(nube,frames,alturaActual,alturaMaxima){
+	let propiedades=Object.keys(frames[0]);
+	let valoresIniciales=Object.values(frames[0]);
+	let valoresFinales=Object.values(frames[1]);
+	let valorActual;
+	let arrayValores=[];
+	for (let j = 0; j < propiedades.length; j++) {
+		if(propiedades[j]!=="transform"){
+			/*No aplica para transform porque su estructura es mas compleja que solo un numero*/
+			const diferencia=valoresFinales[j]-valoresIniciales[j];
+			const division=alturaActual/alturaMaxima;
+			valorActual=redondear(parseInt(valoresIniciales[j])+(division*diferencia));
+		}
+		else{
+			let matrizInicial=descomponerMatrizTransform(valoresIniciales[j]);
+			let matrizFinal=descomponerMatrizTransform(valoresFinales[j]);
+			for (let z = 0; z < matrizInicial.length; z++) {
+				const diferencia=matrizFinal[z]-matrizInicial[z];
+				const division=alturaActual/alturaMaxima;
+				const valAct=redondear(parseFloat(matrizInicial[z])+(division*diferencia));
+				arrayValores.push(valAct);
+			}
+		}
+		switch(propiedades[j]){
+			case "opacity":
+				nube.style.opacity = valorActual;
+				break;
+			case "transform":
+				nube.style.transform=`matrix(${arrayValores[0]},${arrayValores[1]},${arrayValores[2]},${arrayValores[3]},${arrayValores[4]},${arrayValores[5]})`;
+				break;
+		}
+	}
+}
+var alturaFinalNubes=1350;
+/* Evento scroll, que permitira la navegacion en pantalla del algunos elementos de la página */
+window.addEventListener( 'scroll', () =>
+{
+  const SCROLLED = window.scrollY;
+  let maxDeg = 45;
+	for (let i = 0; i < nubes.length; i++) {
+		ajustarValores(nubes[i],arrayFrames[i],SCROLLED,alturaFinalNubes);
+	}
 
-	if(SCROLLED > 0 )
+	/* Mostrando el icono*/
+	if(ANCHO_ICONO >= SCROLLED)
 	{
 
-    /*  Boton del menu */
-	  menu_bottom.style.position = 'fixed';
-    menu_bottom.style.bottom = 0;
+		icono_aparece.style.opacity= 0;
 
-    /* Menu que se encuanta al pie de pagina */
-    menu_bottom.style.opacity=1;
-		menu_fix.style.position = 'fixed';
-		menu_fix.style.zIndex = 60;
-    menu_fix.style.opacity=1;
-    
-    /* Nubes */
-
-    efecto.style.transform = `scale(${scaleNormal += (SCROLLED / (5000 - window.innerHeight) * 10 )})`;
-
-	  c1.style.transform = `scale(${nube1ScaleActual += (SCROLLED / (5000 - window.innerHeight) * 10 )}) translate(${(SCROLLED / (5000 - window.innerHeight) * 10 )  }px)`;
-    c1.style.opacity = opacityActual -= (SCROLLED / (5000 - window.innerHeight) *7.5 ); 
-    
-    c2.style.transform = `scale(${nube2ScaleActual += (SCROLLED / (5000 - window.innerHeight) * 10 )})`;
-    c2.style.opacity = opacityActual -= SCROLLED / (5000 - window.innerHeight); 
-
-	  c3.style.transform = `scale(${nube3ScaleActual += (SCROLLED / (5000 - window.innerHeight) * 10 )})`;
-    c3.style.opacity = opacityActual -=  SCROLLED / (5000 - window.innerHeight);
-
-    c4.style.transform = `scale(${nube4ScaleActual += (SCROLLED / (5000 - window.innerHeight) * 10 )})`;
-    c4.style.opacity = opacityActual -= SCROLLED / (5000 - window.innerHeight); 
-
-    c5.style.transform = `scale(${nube5ScaleActual += (SCROLLED / (5000 - window.innerHeight) * 10 )})`;
-    c5.style.opacity = opacityActual -= SCROLLED / (5000 - window.innerHeight); 
-    
-    c6.style.transform = `scale(${nube6ScaleActual += (SCROLLED / (5000 - window.innerHeight) * 10 )})`;
-    c6.style.opacity = opacityActual -= SCROLLED / (5000 - window.innerHeight); 
-
-
-	  c7.style.transform = `scale(${nube7ScaleActual += (SCROLLED / (5000 - window.innerHeight) * 10 )}) translate(${(SCROLLED / (5000 - window.innerHeight) * 10 )  }px)`;
-    c7.style.opacity = opacityActual -= (SCROLLED / (5000 - window.innerHeight) *7.5 ); 
-    
-    c8.style.transform = `scale(${nube8ScaleActual += (SCROLLED / (5000 - window.innerHeight) * 10 )})`;
-    c8.style.opacity = opacityActual -= SCROLLED / (5000 - window.innerHeight); 
-
-	  c9.style.transform = `scale(${nube9ScaleActual += (SCROLLED / (5000 - window.innerHeight) * 10 )})`;
-    c9.style.opacity = opacityActual -=  SCROLLED / (5000 - window.innerHeight);
-
-    c10.style.transform = `scale(${nube10ScaleActual += (SCROLLED / (5000 - window.innerHeight) * 10 )})`;
-    c10.style.opacity = opacityActual -= SCROLLED / (5000 - window.innerHeight); 
-
-    c11.style.transform = `scale(${nube11ScaleActual += (SCROLLED / (5000 - window.innerHeight) * 10 )})`;
-    c11.style.opacity = opacityActual -= SCROLLED / (5000 - window.innerHeight); 
-    
-    c12.style.transform = `scale(${nube12ScaleActual += (SCROLLED / (5000 - window.innerHeight) * 10 )})`;
-    c12.style.opacity = opacityActual -= SCROLLED / (5000 - window.innerHeight); 
-
-    
-
-	  if(ANCHO_MENU >= SCROLLED)
-	  {
-	    menu_fix.style.position = 'fixed';
-			menu_fix.style.zIndex = 60;
-
-	    menu_disp.addEventListener('click', () => 
-	    {
-	
-		    full_menu.style.opacity = 1;
-		    full_menu.style.zIndex = 70;
-	
-	    });
-	
-	  }
 	}
-	
+
+	else if (ANCHO_ICONO <= SCROLLED)
+	{
+
+		icono_aparece.style.opacity = 1;
+
+	}
+
+
+  if(SCROLLED > 0 )
+	{
+    menu_bottom.style.position = 'fixed';
+	menu_bottom.style.bottom = 0;
+	/**/
+	menu_bottom.style.opacity=1;
+	menu_fix.style.position = 'fixed';
+	menu_fix.style.zIndex = 60;
+	menu_fix.style.opacity=1;
+    if(ANCHO_MENU >= SCROLLED)
+    {
+      menu_disp.addEventListener('click', () =>
+      {
+
+        full_menu.style.opacity = 1;
+        full_menu.style.zIndex = 70;
+
+      });
+
+    }
+
+  }
+  
+
 });
-
-
 
 /* Agregando el menu de patntalla completa */
 
-/* Boton que muestra el menú */ 
-menu_disp.addEventListener('click', () => 
+/* Boton que muestra el menú */
+menu_disp.addEventListener('click', () =>
 {
 
 	full_menu.style.opacity = 1;
@@ -148,8 +209,8 @@ menu_disp.addEventListener('click', () =>
 
 });
 
-/* Boton que oculta el menú */ 
-menu_close.addEventListener('click', () => 
+/* Boton que oculta el menú */
+menu_close.addEventListener('click', () =>
 {
 
 	full_menu.style.opacity = 0;
@@ -158,7 +219,7 @@ menu_close.addEventListener('click', () =>
 
 });
 //Agregando la funcion de boton slider
-menu_bajo.addEventListener('click', () => 
+menu_bajo.addEventListener('click', () =>
 {
 	// Manera de desplazar las pagunas
 });
